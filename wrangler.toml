@@ -1,0 +1,21 @@
+name = "goodwe-notifier"
+main = "src/index.js"
+compatibility_date = "2026-11-01"
+
+# Cron: ogni 5 minuti
+[triggers]
+crons = ["*/5 * * * *"]
+
+# KV usato per ricordare lo stato delle regole (evita notifiche duplicate)
+# e per la sessione di login SEMS+ (riusata ~30 minuti)
+[[kv_namespaces]]
+binding = "STATE"
+id = "<KV_NAMESPACE_ID>"
+
+# Valori da impostare come secret (wrangler secret put NOME), MAI qui in chiaro:
+#   SEMS_ACCOUNT      -> account/email del portale GoodWe SEMS+
+#   SEMS_PASSWORD     -> password dello stesso account
+#   STATION_ID        -> id dell'impianto (vedi README, endpoint di debug ?list=1)
+#   DEBUG_KEY         -> chiave a piacere per proteggere l'endpoint di debug HTTP
+#   TELEGRAM_TOKEN    -> token del bot Telegram (da @BotFather)
+#   TELEGRAM_CHAT_ID  -> id della chat a cui inviare i messaggi
