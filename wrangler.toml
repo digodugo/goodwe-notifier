@@ -6,7 +6,7 @@ compatibility_date = "2026-11-01"
 [triggers]
 crons = ["*/5 * * * *"]
 
-# KV usato per ricordare lo stato delle regole (evita notifiche duplicate)
+# KV usato per stato delle regole, impostazioni, registro rilevazioni
 # e per la sessione di login SEMS+ (riusata ~30 minuti)
 [[kv_namespaces]]
 binding = "STATE"
@@ -19,3 +19,5 @@ id = "<KV_NAMESPACE_ID>"
 #   DEBUG_KEY         -> chiave a piacere per proteggere l'endpoint di debug HTTP
 #   TELEGRAM_TOKEN    -> token del bot Telegram (da @BotFather)
 #   TELEGRAM_CHAT_ID  -> id della chat a cui inviare i messaggi
+# Variabile facoltativa (non segreta):
+#   ENERGY_FIELD      -> nome del campo "produzione di oggi" nella risposta SEMS+, se non trovato in automatico
